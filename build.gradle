@@ -1,0 +1,82 @@
+buildscript {
+    ext {
+        kotlinVersion = '1.2.71'
+        springBootVersion = '2.1.1.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlinVersion}")
+        classpath("org.jetbrains.kotlin:kotlin-allopen:${kotlinVersion}")
+        classpath('se.transmode.gradle:gradle-docker:1.2')
+        classpath "io.spring.gradle:dependency-management-plugin:1.0.0.RC2"
+    }
+}
+
+plugins {
+    id 'net.ltgt.apt' version '0.10'
+}
+apply plugin: 'kotlin'
+apply plugin: 'kotlin-spring'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+apply plugin: 'docker'
+apply plugin: 'io.spring.dependency-management'
+
+group = 'com.jworkplace'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+compileKotlin {
+    kotlinOptions {
+        freeCompilerArgs = ["-Xjsr305=strict"]
+        jvmTarget = "1.8"
+    }
+}
+compileTestKotlin {
+    kotlinOptions {
+        freeCompilerArgs = ["-Xjsr305=strict"]
+        jvmTarget = "1.8"
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+
+dependencies {
+    implementation('org.springframework.boot:spring-boot-starter-data-elasticsearch')
+    implementation('org.springframework.boot:spring-boot-starter-validation')
+    implementation('org.springframework.boot:spring-boot-starter-web')
+    implementation('com.fasterxml.jackson.module:jackson-module-kotlin')
+    implementation('org.springframework.retry:spring-retry')
+    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+    implementation("org.jetbrains.kotlin:kotlin-reflect")
+    testImplementation('org.springframework.boot:spring-boot-starter-test')
+    implementation('org.projectlombok:lombok')
+}
+
+task buildDocker(type: Docker, dependsOn: build) {
+    push = false
+    applicationName = rootProject.name
+    dockerfile = file('src/main/docker/Dockerfile')
+
+    doFirst {
+        // Rename the app jar to "app.jar" so that the Dockerfile does not require renames
+        copy {
+            from "${project.buildDir}/libs"
+            into stageDir
+            include "${rootProject.name}-${version}.jar"
+            rename("${rootProject.name}-${version}.jar", "app.jar")
+        }
+    }
+
+    doLast {
+        println "Run the Docker Container"
+        println "docker run -ti -p 8081:8081 $project.group/$applicationName:$version"
+    }
+}

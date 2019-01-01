@@ -1,0 +1,2 @@
+elasticsearch.endpoint.host=localhost
+elasticsearch.endpoint.port=9200
