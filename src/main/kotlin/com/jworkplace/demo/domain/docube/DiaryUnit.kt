@@ -2,7 +2,7 @@ package com.jworkplace.demo.domain.docube
 
 import java.util.*
 
-data class Document(
+data class DiaryUnit(
         val id:String,
         val title: String,// month, date
         val weather: String,
@@ -12,5 +12,4 @@ data class Document(
         val createdAt: Date,
         val updatedAt: Date,
         val userId: String
-
         )
