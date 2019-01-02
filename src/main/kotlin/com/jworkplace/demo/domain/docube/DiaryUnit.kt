@@ -3,13 +3,13 @@ package com.jworkplace.demo.domain.docube
 import java.util.*
 
 data class DiaryUnit(
-        val id:String,
-        val title: String,// month, date
-        val weather: String,
-        val body: String,
-        val tags: List<String>,
-        val isDeleted: Boolean,
+        var id:String,
+        var title: String,// month, date
+        var weather: String,
+        var body: String,
+        var tags: List<String>,
+        var isDeleted: Boolean,
         val createdAt: Date,
-        val updatedAt: Date,
+        var updatedAt: Date,
         val userId: String
         )
