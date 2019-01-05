@@ -46,8 +46,8 @@ class DiaryController(@Autowired val diaryService: DiaryService) {
         Preconditions.checkNotNull(diaryCondition)
 
         val userId = diaryCondition.userId ?: ""
-        val from = diaryCondition.from ?: DateUtils.formatDate(Date(), "yyMMdd")
-        val to = diaryCondition.to ?: DateUtils.formatDate(Date(), "yyMMdd")
+        val from = diaryCondition.from ?: DateUtils.formatDate(Date(), "yyyyMMdd")
+        val to = diaryCondition.to ?: DateUtils.formatDate(Date(), "yyyyMMdd")
 
         val response  = diaryService.get(userId, from, to)
         log.info("userId = $userId, from=$from, to=$to, response=$response")

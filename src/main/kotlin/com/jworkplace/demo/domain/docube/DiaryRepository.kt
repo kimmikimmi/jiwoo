@@ -68,6 +68,7 @@ class DiaryRepository(@Autowired val restClient: RestHighLevelClient) {
         val searchRequest = SearchRequest(indexName)
         searchRequest.types(type)
 
+        log.info("startDate=$startDate endDate=$endDate userId=$userId")
         val searchSourceBuilder = SearchSourceBuilder()
         searchSourceBuilder
                 .query(

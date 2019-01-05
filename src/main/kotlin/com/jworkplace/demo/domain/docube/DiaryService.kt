@@ -1,5 +1,6 @@
 package com.jworkplace.demo.domain.docube
 
+import com.jworkplace.demo.common.extention.getLogger
 import lombok.extern.slf4j.Slf4j
 import org.apache.http.client.utils.DateUtils
 import org.springframework.beans.factory.annotation.Autowired
@@ -11,6 +12,8 @@ import java.util.*
 @Slf4j
 @Service
 class DiaryService(@Autowired val diaryRepository: DiaryRepository) {
+
+    private val log = getLogger()
 
     fun putNewDocument(diaryUnitDto: DiaryUnitDto) {
         val diaryUnit = DiaryUnit("",
@@ -53,9 +56,11 @@ class DiaryService(@Autowired val diaryRepository: DiaryRepository) {
         val startDate = SimpleDateFormat("yyyyMMdd").parse(from)
         val endDate = SimpleDateFormat("yyyyMMdd").parse(to)
 
+        log.info("startDate = $startDate, endDate = $endDate")
         return  diaryRepository.getByUserAndUpdatedAtInRange(userId, startDate, endDate)
                 .filter { it -> !it.isDeleted }
                 .map { it ->
+                    log.info("in map, title=${it.title} userId=${it.userId}")
                     val dto = DiaryUnitDto(it.title, it.weather, it.body, it.tags, it.userId)
                     DiaryUnitResponseDto(dto, it.updatedAt)
                 }
