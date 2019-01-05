@@ -72,10 +72,11 @@ class DiaryRepository(@Autowired val restClient: RestHighLevelClient) {
         val searchSourceBuilder = SearchSourceBuilder()
         searchSourceBuilder
                 .query(
-                        QueryBuilders.boolQuery()
-                                .filter(QueryBuilders.rangeQuery("updatedAt")
-                                        .gte(startDate)
-                                        .lt(endDate))
+                        QueryBuilders.matchAllQuery()
+//                        QueryBuilders.boolQuery()
+//                                .filter(QueryBuilders.rangeQuery("updatedAt")
+//                                        .gte(startDate)
+//                                        .lt(endDate))
 //                                .filter(QueryBuilders.termQuery("userId", userId))
                 )
                 .size(31)
