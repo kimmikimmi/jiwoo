@@ -12,8 +12,7 @@ import org.elasticsearch.client.RequestOptions
 import org.elasticsearch.client.RestHighLevelClient
 import org.elasticsearch.common.xcontent.XContentFactory.jsonBuilder
 import org.elasticsearch.common.xcontent.XContentType
-import org.elasticsearch.index.query.BoolQueryBuilder
-import org.elasticsearch.index.query.QueryBuilders
+import org.elasticsearch.index.query.*
 import org.elasticsearch.search.builder.SearchSourceBuilder
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Repository
@@ -69,16 +68,13 @@ class DiaryRepository(@Autowired val restClient: RestHighLevelClient) {
         searchRequest.types(type)
 
         log.info("startDate=$startDate endDate=$endDate userId=$userId")
+
+        val boolQueryBuilder = BoolQueryBuilder()
+                .must(RangeQueryBuilder("updatedAt").gte(startDate).lt(endDate))
+                .filter(TermQueryBuilder("userId.keyword", userId))
+
         val searchSourceBuilder = SearchSourceBuilder()
-        searchSourceBuilder
-                .query(
-                        QueryBuilders.matchAllQuery()
-//                        QueryBuilders.boolQuery()
-//                                .filter(QueryBuilders.rangeQuery("updatedAt")
-//                                        .gte(startDate)
-//                                        .lt(endDate))
-//                                .filter(QueryBuilders.termQuery("userId", userId))
-                )
+                .query(boolQueryBuilder)
                 .size(31)
                 .sort("updatedAt.keyword")
 
