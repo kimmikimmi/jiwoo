@@ -56,6 +56,9 @@ dependencies {
     implementation('org.springframework.retry:spring-retry')
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
+
+    implementation 'com.google.firebase:firebase-admin:6.5.0'
+   
     testImplementation('org.springframework.boot:spring-boot-starter-test')
     implementation('org.projectlombok:lombok')
     compile group: 'com.google.code.gson', name: 'gson', version: '2.7'

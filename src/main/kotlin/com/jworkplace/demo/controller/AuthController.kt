@@ -1,4 +1,4 @@
-package com.jworkplace.demo
+package com.jworkplace.demo.controller
 
 import com.jworkplace.demo.common.extention.getLogger
 import com.jworkplace.demo.controller.DiaryResponse
