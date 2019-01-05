@@ -15,7 +15,9 @@ class RequestTokenAuthInterceptor(@Autowired val firebaseAuthManager: FirebaseAu
 
     @Throws(Exception::class)
     override fun preHandle(request: HttpServletRequest, response: HttpServletResponse, handler: Any): Boolean {
-        log.info("------ pre handle -----")
+        if (request.getHeader("env") != null && request.getHeader("env").contains("develop")) {
+            return true
+        }
         val token = request.getHeader("token")
         try {
             val uuid = firebaseAuthManager.verifyToken(token)

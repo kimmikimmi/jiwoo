@@ -1,5 +1,6 @@
 package com.jworkplace.demo.controller
 
+import com.google.api.client.util.Preconditions
 import com.jworkplace.demo.common.extention.getLogger
 import com.jworkplace.demo.domain.docube.DiaryService
 import com.jworkplace.demo.domain.docube.DiaryUnitDto
@@ -14,8 +15,10 @@ class DiaryController(@Autowired val diaryService: DiaryService) {
     val log = getLogger()
 
     @PostMapping("/diary")
-    fun createNewDocube(@RequestBody diaryUnitDto: DiaryUnitDto): DiaryResponse {
+    fun createDocument(@RequestBody diaryUnitDto: DiaryUnitDto): DiaryResponse {
+        Preconditions.checkNotNull(diaryUnitDto)
 
+        log.info("create new diary diaryUnitDto=$diaryUnitDto")
         diaryService.putNewDocument(diaryUnitDto)
 
         return DiaryResponse(200, "success to insert")
@@ -23,6 +26,9 @@ class DiaryController(@Autowired val diaryService: DiaryService) {
 
     @PostMapping("/diary/{id}")
     fun updateDocument(@PathVariable id: String, @RequestBody diaryUnitDto: DiaryUnitDto): DiaryResponse {
+        Preconditions.checkNotNull(diaryUnitDto)
+
+        log.info("updateDocument. diaryUnitDto=$diaryUnitDto, documentId=$id")
         diaryService.updateDocument(id, diaryUnitDto)
 
         return DiaryResponse(200, "success to update")
