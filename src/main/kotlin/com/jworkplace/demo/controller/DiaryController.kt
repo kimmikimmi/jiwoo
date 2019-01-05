@@ -34,7 +34,7 @@ class DiaryController(@Autowired val diaryService: DiaryService) {
     }
 
     @GetMapping("/diary/{userId}")
-    fun getDocuments(@PathVariable userId: String, from: String, to: String): List<DiaryUnitResponseDto> {
+    fun getDocuments(@PathVariable userId: String, @RequestParam from: String, @RequestParam to: String): List<DiaryUnitResponseDto> {
         return diaryService.get(userId, from, to)
     }
 }
