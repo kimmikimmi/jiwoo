@@ -16,13 +16,14 @@ class RequestTokenAuthInterceptor(@Autowired val firebaseAuthManager: FirebaseAu
     @Throws(Exception::class)
     override fun preHandle(request: HttpServletRequest, response: HttpServletResponse, handler: Any): Boolean {
         log.info("------ pre handle -----")
-//        val token = request.getHeader("token")
-//        try {
-//            firebaseAuthManager.verifyToken(token)
-//        } catch (e: java.lang.Exception) {
-//            log.error("token: $token is not valid", e)
-//            return false
-//        }
+        val token = request.getHeader("token")
+        try {
+            val uuid = firebaseAuthManager.verifyToken(token)
+            log.info("token=$token , uuid=$uuid")
+        } catch (e: java.lang.Exception) {
+            log.error("token: $token is not valid", e)
+            return false
+        }
         return true
     }
 }
