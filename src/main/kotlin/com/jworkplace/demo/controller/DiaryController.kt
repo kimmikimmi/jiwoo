@@ -41,7 +41,7 @@ class DiaryController(@Autowired val diaryService: DiaryService) {
         return diaryService.get(id)
     }
 
-    @PostMapping("/diary")
+    @PostMapping("/diary/search")
     fun getDocuments(@RequestBody diaryCondition: DiaryCondition): List<DiaryUnitResponseDto> {
         Preconditions.checkNotNull(diaryCondition)
 
