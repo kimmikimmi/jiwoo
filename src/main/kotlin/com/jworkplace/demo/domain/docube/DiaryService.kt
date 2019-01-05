@@ -4,6 +4,8 @@ import lombok.extern.slf4j.Slf4j
 import org.apache.http.client.utils.DateUtils
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
+import java.text.SimpleDateFormat
+import java.time.LocalDate
 import java.util.*
 
 @Slf4j
@@ -48,8 +50,8 @@ class DiaryService(@Autowired val diaryRepository: DiaryRepository) {
     }
 
     fun get(userId: String, from: String, to: String): List<DiaryUnitResponseDto> {
-        val startDate = DateUtils.parseDate(from)
-        val endDate = DateUtils.parseDate(to)
+        val startDate = SimpleDateFormat("yyyyMMdd").parse(from)
+        val endDate = SimpleDateFormat("yyyyMMdd").parse(to)
 
         return  diaryRepository.getByUserAndUpdatedAtInRange(userId, startDate, endDate)
                 .filter { it -> !it.isDeleted }

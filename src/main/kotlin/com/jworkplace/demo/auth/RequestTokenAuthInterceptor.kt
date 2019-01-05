@@ -15,6 +15,7 @@ class RequestTokenAuthInterceptor(@Autowired val firebaseAuthManager: FirebaseAu
 
     @Throws(Exception::class)
     override fun preHandle(request: HttpServletRequest, response: HttpServletResponse, handler: Any): Boolean {
+        //개발 환경에서 테스트할때 사용하려고 우선 만들어 둠, 추후에 환경을 분리하여 적용해 보자.
         if (request.getHeader("env") != null && request.getHeader("env").contains("develop")) {
             return true
         }
