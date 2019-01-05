@@ -75,7 +75,7 @@ class DiaryRepository(@Autowired val restClient: RestHighLevelClient) {
                                 .filter(QueryBuilders.rangeQuery("updatedAt")
                                         .gte(startDate)
                                         .lt(endDate))
-                                .should(QueryBuilders.termQuery("userId", userId))
+//                                .filter(QueryBuilders.termQuery("userId", userId))
                 )
                 .size(31)
                 .sort("updatedAt.keyword")
