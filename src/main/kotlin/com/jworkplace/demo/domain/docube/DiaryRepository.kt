@@ -12,6 +12,7 @@ import org.elasticsearch.client.RequestOptions
 import org.elasticsearch.client.RestHighLevelClient
 import org.elasticsearch.common.xcontent.XContentFactory.jsonBuilder
 import org.elasticsearch.common.xcontent.XContentType
+import org.elasticsearch.index.query.BoolQueryBuilder
 import org.elasticsearch.index.query.QueryBuilders
 import org.elasticsearch.search.builder.SearchSourceBuilder
 import org.springframework.beans.factory.annotation.Autowired
@@ -69,10 +70,13 @@ class DiaryRepository(@Autowired val restClient: RestHighLevelClient) {
 
         val searchSourceBuilder = SearchSourceBuilder()
         searchSourceBuilder
-                .query(QueryBuilders.rangeQuery("updatedAt")
-                        .gte(startDate)
-                        .lt(endDate))
-                .query(QueryBuilders.termQuery("userId", userId))
+                .query(
+                        QueryBuilders.boolQuery()
+                                .filter(QueryBuilders.rangeQuery("updatedAt")
+                                        .gte(startDate)
+                                        .lt(endDate))
+                                .should(QueryBuilders.termQuery("userId", userId))
+                )
                 .size(31)
                 .sort("updatedAt.keyword")
 
@@ -85,7 +89,7 @@ class DiaryRepository(@Autowired val restClient: RestHighLevelClient) {
     fun search(searchRequest: SearchRequest): List<DiaryUnit> {
         val diaryUnits = mutableListOf<DiaryUnit>()
         val searchResponse = restClient.search(searchRequest, RequestOptions.DEFAULT)
-         searchResponse.hits
+        searchResponse.hits
                 .forEach { it ->
                     val diaryUnit = Gson().fromJson(it.sourceAsString, DiaryUnit::class.java)
                     diaryUnit.id = it.id
