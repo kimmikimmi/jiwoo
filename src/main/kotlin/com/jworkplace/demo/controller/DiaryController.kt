@@ -49,7 +49,10 @@ class DiaryController(@Autowired val diaryService: DiaryService) {
         val from = diaryCondition.from ?: DateUtils.formatDate(Date(), "yyMMdd")
         val to = diaryCondition.to ?: DateUtils.formatDate(Date(), "yyMMdd")
 
-        return diaryService.get(userId, from, to)
+        val response  = diaryService.get(userId, from, to)
+        log.info("userId = $userId, from=$from, to=$to, response=$response")
+
+        return response
     }
 
      data class DiaryCondition(val userId: String?, val from: String?, val to: String?)
