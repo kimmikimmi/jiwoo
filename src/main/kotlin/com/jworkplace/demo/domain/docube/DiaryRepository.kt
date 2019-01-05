@@ -74,7 +74,7 @@ class DiaryRepository(@Autowired val restClient: RestHighLevelClient) {
                         .lt(endDate))
                 .query(QueryBuilders.termQuery("userId", userId))
                 .size(31)
-                .sort("updatedAt")
+                .sort("updatedAt.keyword")
 
         searchRequest.source(searchSourceBuilder)
 
