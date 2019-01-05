@@ -67,4 +67,8 @@ class DiaryService(@Autowired val diaryRepository: DiaryRepository) {
 
     }
 
+    fun deleteDocument(id: String) {
+        return diaryRepository.delete(id)
+    }
+
 }

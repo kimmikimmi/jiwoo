@@ -36,6 +36,15 @@ class DiaryController(@Autowired val diaryService: DiaryService) {
         return DiaryResponse(200, "success to update")
     }
 
+    @DeleteMapping("/diary/{id}")
+    fun deleteDocument(@PathVariable id: String): DiaryResponse {
+        log.info("deleteDocument. id=$id")
+
+        diaryService.deleteDocument(id)
+
+        return DiaryResponse(200, "success to delete")
+    }
+
     @GetMapping("/diary/{id}")
     fun getDocument(@PathVariable id: String): DiaryUnitResponseDto {
         return diaryService.get(id)
