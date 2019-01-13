@@ -12,12 +12,6 @@ class HelloController {
 
     @GetMapping("/hello")
     fun  hello(): String {
-        val list = listOf("1", "2")
-        list.forEach { it -> print(it + 1) }
-
-        log.info("abc")
-
-
         return "world!"
     }
 }

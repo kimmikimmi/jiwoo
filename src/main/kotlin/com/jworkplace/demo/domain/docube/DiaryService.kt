@@ -18,6 +18,7 @@ class DiaryService(@Autowired val diaryRepository: DiaryRepository) {
     fun putNewDocument(diaryUnitDto: DiaryUnitDto) {
         val diaryUnit = DiaryUnit("",
                 diaryUnitDto.title,
+                diaryUnitDto.date,
                 diaryUnitDto.weather,
                 diaryUnitDto.body,
                 diaryUnitDto.tags,
@@ -33,6 +34,7 @@ class DiaryService(@Autowired val diaryRepository: DiaryRepository) {
     fun updateDocument(id: String, diaryUnitDto: DiaryUnitDto) {
         val diaryUnit = DiaryUnit("",
                 diaryUnitDto.title,
+                diaryUnitDto.date,
                 diaryUnitDto.weather,
                 diaryUnitDto.body,
                 diaryUnitDto.tags,
@@ -47,7 +49,7 @@ class DiaryService(@Autowired val diaryRepository: DiaryRepository) {
     fun get(id: String): DiaryUnitResponseDto {
         val diaryUnit = diaryRepository.getDocumentById(id)
 
-        return DiaryUnitResponseDto(diaryUnit.id, diaryUnit.title, diaryUnit.weather, diaryUnit.body, diaryUnit.tags, diaryUnit.userId, diaryUnit.updatedAt)
+        return DiaryUnitResponseDto(diaryUnit.id, diaryUnit.title, diaryUnit.date, diaryUnit.weather, diaryUnit.body, diaryUnit.tags, diaryUnit.userId, diaryUnit.updatedAt)
     }
 
     fun get(userId: String, from: String, to: String): List<DiaryUnitResponseDto> {
@@ -59,7 +61,7 @@ class DiaryService(@Autowired val diaryRepository: DiaryRepository) {
                 .filter { it -> !it.isDeleted }
                 .map { it ->
                     log.info("in map, title=${it.title} userId=${it.userId}")
-                    DiaryUnitResponseDto(it.id, it.title, it.weather, it.body, it.tags, it.userId, it.updatedAt)
+                    DiaryUnitResponseDto(it.id, it.title, it.date, it.weather, it.body, it.tags, it.userId, it.updatedAt)
                 }
 
     }

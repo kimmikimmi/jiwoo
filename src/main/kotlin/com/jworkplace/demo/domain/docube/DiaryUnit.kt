@@ -4,7 +4,8 @@ import java.util.*
 
 data class DiaryUnit(
         var id:String,
-        var title: String,// month, date
+        var title: String,
+        var date: Date, //yyyyMMdd
         var weather: String,
         var body: String,
         var tags: List<String>,

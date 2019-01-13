@@ -1,0 +1,243 @@
+GET http://localhost:8080/recommendation/여자/남자
+Accept: */*
+Cache-Control: no-cache
+env: develop
+
+<> 2019-01-13T032248.200.json
+
+###
+
+GET http://localhost:8080/recommendation/여자
+Accept: */*
+Cache-Control: no-cache
+env: develop
+
+<> 2019-01-13T032242.200.txt
+
+###
+
+GET http://localhost:8080/recommendation/철학/치킨
+Accept: */*
+Cache-Control: no-cache
+env: develop
+
+<> 2019-01-13T032131.200.json
+
+###
+
+GET http://localhost:8080/recommendation/철학/정치철학
+Accept: */*
+Cache-Control: no-cache
+env: develop
+
+<> 2019-01-13T032107.200.json
+
+###
+
+GET http://localhost:8080/recommendation/철학,정치철학
+Accept: */*
+Cache-Control: no-cache
+env: develop
+
+<> 2019-01-13T032040.200.txt
+
+###
+
+GET http://localhost:8080/recommendation/철학,정치철학
+Accept: */*
+Cache-Control: no-cache
+env: develop
+
+<> 2019-01-13T024958.200.txt
+
+###
+
+GET http://localhost:8080/recommendation/철학/정치철학
+Accept: */*
+Cache-Control: no-cache
+env: develop
+
+<> 2019-01-13T024925.200.json
+
+###
+
+GET http://localhost:8080/recommendation/철학+정치철학
+Accept: */*
+Cache-Control: no-cache
+env: develop
+
+<> 2019-01-13T023821.200.txt
+
+###
+
+GET http://localhost:8080/recommendation/철학+정치철학
+Accept: */*
+Cache-Control: no-cache
+env: develop
+
+<> 2019-01-13T023703.200.txt
+
+###
+
+GET http://localhost:8080/recommendation/철학+정치철학
+Accept: */*
+Cache-Control: no-cache
+env: develop
+
+<> 2019-01-13T023615.500.json
+
+###
+
+GET http://localhost:8080/recommendation/철학+정치철학
+Accept: */*
+Cache-Control: no-cache
+env: develop
+
+<> 2019-01-13T023501.500.json
+
+###
+
+GET http://localhost:8080/recommendation/철학+정치철학
+Accept: */*
+Cache-Control: no-cache
+env: develop
+
+<> 2019-01-13T023438.500.json
+
+###
+
+GET http://localhost:8080/recommendation/철학+정치철학
+Accept: */*
+Cache-Control: no-cache
+env: develop
+
+<> 2019-01-13T023216.500.json
+
+###
+
+GET http://localhost:8080/recommendation/철학+정치철학
+Accept: */*
+Cache-Control: no-cache
+env: develop
+
+<> 2019-01-13T023147.500.json
+
+###
+
+GET http://localhost:8080/recommendation/철학+정치철학
+Accept: */*
+Cache-Control: no-cache
+env: develop
+
+<> 2019-01-13T023059.500.json
+
+###
+
+GET http://localhost:8080/recommendation/철학+정치철학
+Accept: */*
+Cache-Control: no-cache
+env: develop
+
+<> 2019-01-13T022753.500.json
+
+###
+
+GET http://localhost:8080/recommendation/철학+정치철학
+Accept: */*
+Cache-Control: no-cache
+env: develop
+
+<> 2019-01-13T022748.500.json
+
+###
+
+GET http://localhost:8080/recommendation/철학+정치철학
+Accept: */*
+Cache-Control: no-cache
+env: develop
+
+<> 2019-01-13T022648.500.json
+
+###
+
+GET http://localhost:8080/recommendation/철학+정치철학
+Accept: */*
+Cache-Control: no-cache
+env: develop
+
+<> 2019-01-13T022539.500.json
+
+###
+
+GET http://localhost:8080/recommendation/철학+정치철학
+Accept: */*
+Cache-Control: no-cache
+env: develop
+
+<> 2019-01-13T022449.500.json
+
+###
+
+GET http://localhost:8080/recommendation/철학+정치철학
+Accept: */*
+Cache-Control: no-cache
+env: develop
+
+<> 2019-01-13T022036.200.txt
+
+###
+
+GET http://localhost:8080/recommendation/철학+정치철학
+Accept: */*
+Cache-Control: no-cache
+env: develop
+
+<> 2019-01-13T122552.200.txt
+
+###
+
+GET http://localhost:8080/recommendation/철학-정치철학
+Accept: */*
+Cache-Control: no-cache
+env: develop
+
+<> 2019-01-13T122542.200.txt
+
+###
+
+GET http://localhost:8080/recommendation/철학
+Accept: */*
+Cache-Control: no-cache
+env: develop
+
+<> 2019-01-13T122527.200.txt
+
+###
+
+GET http://localhost:8080/recommendation/jamsil
+Accept: */*
+Cache-Control: no-cache
+env: develop
+
+<> 2019-01-13T122500.200.txt
+
+###
+
+GET http://localhost:8080/recommendation/통닭
+Accept: */*
+Cache-Control: no-cache
+env: develop
+
+<> 2019-01-13T122441.200.txt
+
+###
+
+GET http://localhost:8080/recommendation/jaden
+Accept: */*
+Cache-Control: no-cache
+env: develop
+
+<> 2019-01-13T122417.200.txt
+
+###
+
