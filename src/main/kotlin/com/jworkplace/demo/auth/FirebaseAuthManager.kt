@@ -17,11 +17,14 @@ class FirebaseAuthManager {
 
     @PostConstruct
     fun init() {
-        val serviceAccount = FileInputStream("tmp/serviceAccountKey.json")
+//        val serviceAccount = FileInputStream("tmp/serviceAccountKey.json")
+        val serviceAccount = FileInputStream("tmp/diary_auth.json")
+
 
         val options = FirebaseOptions.builder()
                 .setCredentials(GoogleCredentials.fromStream(serviceAccount))
-                .setDatabaseUrl("https://abiding-ascent-227313.firebaseio.com")
+//                .setDatabaseUrl("https://abiding-ascent-227313.firebaseio.com")
+                .setDatabaseUrl("https://diary-b3f7c.firebaseio.com")
                 .build()
 
         FirebaseApp.initializeApp(options)
