@@ -20,14 +20,14 @@ class RequestTokenAuthInterceptor(@Autowired val firebaseAuthManager: FirebaseAu
 //        if (request.getHeader("env") != null && request.getHeader("env").contains("develop")) {
 //            return true
 //        }
-//        val token = request.getHeader("token")
-//        try {
-//            val uuid = firebaseAuthManager.verifyToken(token)
-//            log.info("token=$token , uuid=$uuid")
-//        } catch (e: java.lang.Exception) {
-//            log.error("token: $token is not valid", e)
-//            return false
-//        }
-//        return true
+        val token = request.getHeader("token")
+        try {
+            val uuid = firebaseAuthManager.verifyToken(token)
+            log.info("token=$token , uuid=$uuid")
+        } catch (e: java.lang.Exception) {
+            log.error("token: $token is not valid", e)
+            return false
+        }
+        return true
     }
 }
