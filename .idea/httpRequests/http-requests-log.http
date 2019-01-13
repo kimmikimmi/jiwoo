@@ -1,3 +1,21 @@
+GET http://localhost:8080/recommendation/치킨/주말
+Accept: */*
+Cache-Control: no-cache
+env: develop
+
+<> 2019-01-13T035724.200.json
+
+###
+
+GET http://localhost:8080/recommendation/여자/목욕
+Accept: */*
+Cache-Control: no-cache
+env: develop
+
+<> 2019-01-13T035714.200.json
+
+###
+
 GET http://localhost:8080/recommendation/여자/남자
 Accept: */*
 Cache-Control: no-cache
